@@ -1,0 +1,22 @@
+DROP DATABASE dss_desafio2;
+
+CREATE DATABASE dss_desafio2;
+
+USE dss_desafio2;
+
+CREATE TABLE `user` (
+    id INT AUTO_INCREMENT PRIMARY KEY UNIQUE,
+    `name` VARCHAR(100) NOT NULL,
+    username VARCHAR(20) NOT NULL UNIQUE,
+    `password` VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE `product` (
+    id INT AUTO_INCREMENT PRIMARY KEY UNIQUE ,
+    product_owner INT NOT NULL,
+    `name` VARCHAR(100) NOT NULL,
+    `description` VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (product_owner) REFERENCES `user`(id)
+);
